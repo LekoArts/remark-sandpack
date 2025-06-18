@@ -1,0 +1,90 @@
+{
+	"type": "root",
+	"children": [
+		{
+			"type": "mdxJsxFlowElement",
+			"name": "Sandpack",
+			"attributes": [
+				{
+					"type": "mdxJsxAttribute",
+					"name": "template",
+					"value": "react",
+					"position": {
+						"start": {
+							"line": 1,
+							"column": 11,
+							"offset": 10
+						},
+						"end": {
+							"line": 1,
+							"column": 27,
+							"offset": 26
+						}
+					}
+				}
+			],
+			"children": [
+				{
+					"type": "code",
+					"lang": "js",
+					"meta": "name=App.js active",
+					"value": "import { NAME } from './constants.js'\n\nexport default function App() {\n  return <h1>Hello {NAME}</h1>\n}",
+					"position": {
+						"start": {
+							"line": 3,
+							"column": 1,
+							"offset": 29
+						},
+						"end": {
+							"line": 9,
+							"column": 4,
+							"offset": 161
+						}
+					}
+				},
+				{
+					"type": "code",
+					"lang": "js",
+					"meta": "name=constants.js readOnly",
+					"value": "export const NAME = 'World'",
+					"position": {
+						"start": {
+							"line": 11,
+							"column": 1,
+							"offset": 163
+						},
+						"end": {
+							"line": 13,
+							"column": 4,
+							"offset": 227
+						}
+					}
+				}
+			],
+			"position": {
+				"start": {
+					"line": 1,
+					"column": 1,
+					"offset": 0
+				},
+				"end": {
+					"line": 15,
+					"column": 12,
+					"offset": 240
+				}
+			}
+		}
+	],
+	"position": {
+		"start": {
+			"line": 1,
+			"column": 1,
+			"offset": 0
+		},
+		"end": {
+			"line": 16,
+			"column": 1,
+			"offset": 241
+		}
+	}
+}

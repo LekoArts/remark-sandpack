@@ -1,0 +1,127 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "mdxJsxFlowElement",
+      "name": "Playground",
+      "attributes": [
+        {
+          "type": "mdxJsxAttribute",
+          "name": "template",
+          "value": "react",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 13,
+              "offset": 12
+            },
+            "end": {
+              "line": 1,
+              "column": 29,
+              "offset": 28
+            }
+          }
+        }
+      ],
+      "children": [
+        {
+          "type": "code",
+          "lang": "js",
+          "meta": "name=App.js active",
+          "value": "export default function App() {\n  return <h1>Hello World</h1>\n}",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 31
+            },
+            "end": {
+              "line": 7,
+              "column": 4,
+              "offset": 123
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 14,
+          "offset": 138
+        }
+      }
+    },
+    {
+      "type": "mdxJsxFlowElement",
+      "name": "MinimalPlayground",
+      "attributes": [
+        {
+          "type": "mdxJsxAttribute",
+          "name": "template",
+          "value": "react",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 20,
+              "offset": 159
+            },
+            "end": {
+              "line": 11,
+              "column": 36,
+              "offset": 175
+            }
+          }
+        }
+      ],
+      "children": [
+        {
+          "type": "code",
+          "lang": "js",
+          "meta": "name=App.js",
+          "value": "export default function App() {\n  return <h1>Hello World Two!</h1>\n}",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1,
+              "offset": 178
+            },
+            "end": {
+              "line": 17,
+              "column": 4,
+              "offset": 268
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1,
+          "offset": 140
+        },
+        "end": {
+          "line": 19,
+          "column": 21,
+          "offset": 290
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 20,
+      "column": 1,
+      "offset": 291
+    }
+  }
+}

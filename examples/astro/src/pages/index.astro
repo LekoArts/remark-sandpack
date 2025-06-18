@@ -1,0 +1,22 @@
+---
+import MdxContent from '../content.mdx'
+import Playground from '../playground.astro'
+import '../styles.css'
+---
+
+<!doctype html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🦄</text></svg>" />
+		<meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="light dark" />
+    <title>remark-sandpack - More easily author Sandpack examples in your MDX</title>
+	</head>
+	<body>
+		<main>
+      <MdxContent components={{ Playground }} />
+    </main>
+	</body>
+</html>

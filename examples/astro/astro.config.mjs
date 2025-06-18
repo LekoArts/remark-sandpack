@@ -1,14 +1,11 @@
-import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
-import mdx from '@astrojs/mdx';
-import { remarkSandpack } from 'remark-sandpack';
+import mdx from '@astrojs/mdx'
+import react from '@astrojs/react'
+import remarkSandpack from '@lekoarts/remark-sandpack'
+import { defineConfig } from 'astro/config'
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [
-    react(),
-    mdx({
-      remarkPlugins: [remarkSandpack],
-    }),
-  ],
-});
+	integrations: [mdx(), react()],
+	markdown: {
+		remarkPlugins: [[remarkSandpack, { componentName: ['Playground'] }]],
+	},
+})

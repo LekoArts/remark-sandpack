@@ -1,33 +1,25 @@
-import { transformCode } from './node';
-import type { JsxNodeElement, Tree } from './types';
+import type { Root } from 'mdast'
+import type { MdxJsxFlowElement } from 'mdast-util-mdx-jsx'
+import type { RemarkSandpackOptions } from './types'
+import { transformCode } from './node'
 
-interface VFile {
-  history: string[];
-  cwd: string;
+export default function remarkSandpack(options?: Readonly<RemarkSandpackOptions>) {
+	const componentName = options?.componentName || ['Sandpack']
+
+	return async (tree: Root): Promise<void> => {
+		const visit = await import('unist-util-visit').then(module => module.visit)
+		const promises: Array<() => Promise<void>> = []
+
+		visit(tree, 'mdxJsxFlowElement', (jsxNode: MdxJsxFlowElement) => {
+			if (!jsxNode.name)
+				return
+
+			if (!componentName.includes(jsxNode.name))
+				return
+
+			promises.push(async () => transformCode(jsxNode))
+		})
+
+		await Promise.all(promises.map(p => p()))
+	}
 }
-
-interface Options {
-  /**
-   * Specify custom component name, component will receive sandpack files as prop
-   * @default Sandpack
-   */
-  componentName?: string | string[];
-}
-
-export const transform = (options?: Options) => {
-  const componentName = Array.isArray(options?.componentName)
-    ? options?.componentName
-    : [options?.componentName || 'Sandpack'];
-  return async (tree: Tree, file: VFile): Promise<void> => {
-    const visit = await import('unist-util-visit').then((module) => module.visit);
-    const promises: Array<() => Promise<void>> = [];
-
-    visit(tree, 'mdxJsxFlowElement', (jsxNode: JsxNodeElement) => {
-      if (!componentName.includes(jsxNode.name)) return;
-
-      promises.push(async () => transformCode(jsxNode, file));
-    });
-
-    await Promise.all(promises.map((p) => p()));
-  };
-};
