@@ -1,0 +1,43 @@
+# remark-sandpack
+
+Use [`@lekoarts/remark-sandpack`](https://github.com/LekoArts/remark-sandpack) to more easily author [Sandpack](https://sandpack.codesandbox.io/docs) examples in your MDX. It parses individual code blocks and places them into Sandpack's `files` option. This way you don't have to write the JSX yourself.
+
+Here's a live example:
+
+<Playground template="react">
+
+```js name=App.js active
+import { NAME } from './constants.js'
+
+export default function App() {
+  return <h1>Hello {NAME}</h1>
+}
+```
+
+```js name=constants.js readOnly
+export const NAME = 'World'
+```
+
+</Playground>
+
+It was authored like so:
+
+````md
+<Playground template="react">
+
+```js name=App.js active
+import { NAME } from './constants.js'
+
+export default function App() {
+  return <h1>Hello {NAME}</h1>
+}
+```
+
+```js name=constants.js readOnly
+export const NAME = 'World'
+```
+
+</Playground>
+````
+
+Learn more about `@lekoarts/remark-sandpack` on [GitHub](https://github.com/LekoArts/remark-sandpack).

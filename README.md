@@ -1,170 +1,160 @@
+# remark-sandpack
 
-# Power MDX with Sandpack
+Use `@lekoarts/remark-sandpack` to more easily author [Sandpack](https://sandpack.codesandbox.io/docs) examples in your MDX. It parses individual code blocks and places them into Sandpack's `files` option. This way you don't have to write the JSX yourself.
 
-<br/>
-<br/>
+> [!NOTE]
+> This package is a fork of [thecuvii/remark-sandpack](https://github.com/thecuvii/remark-sandpack) as the repository was put into read-only mode. `@lekoarts/remark-sandpack` is leaner, up-to-date, and maintained.
+
+## Installation
+
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
+
+```shell
+npm install @lekoarts/remark-sandpack
+```
 
 ## Usage
 
-### 1. Install
-```shell
-npm install remark-sandpack @codesandbox/sandpack-react
-```
+Say your document `index.mdx` contains:
 
-### 2. Register remark plugin
+````mdx
+<Sandpack template="react">
 
-It may be different for each MDX plugin you use. Check out [examples](#Compatible) below.
+```js name=App.js active
+import { NAME } from './constants.js'
 
-### 3. Write your code
-
-````md
-
-## 👍Sandpack is awesome.
-
-import { Sandpack } from '@codesandbox/sandpack-react';
-
-
-<Sandpack template="vanilla">
-```js src/index.js
-import "./styles.css";
-
-document.getElementById("app").innerHTML = `
-<h1>Hello Sandpack</h1>
-`;
-
-```
-
-// import code from file, path should relative to process.cwd().
-```css src/styles.css file=styles/globals.css
-// those code will be ignored
-h1{
-  background: red;
+export default function App() {
+  return <h1>Hello {NAME}</h1>
 }
 ```
 
-```js readonly-file.js readOnly
-// I'm  readonly
+```js name=constants.js readOnly
+export const NAME = 'World'
 ```
+
 </Sandpack>
-
-👍Sandpack is awesome.
-👍Sandpack is awesome.
-👍Sandpack is awesome.
-
 ````
 
-## Configuration
-
-1. Sandpack component
-
-All props will pass to `Sandpack` directly, except `files`.
-
-````md
-
-<Sandpack
-  theme={theme}
-  template="react"
-  customSetup={{
-    dependencies: {
-      react: "17.0.2",
-      "react-dom": "17.0.2",
-      "react-scripts": "4.0.0",
-    },
-  }}
->
-// markdown code blocks...
-</Sandpack>
-
-````
-
-2. Code Blocks
-
-All code blocks contained within `<Sandpack>/Sandpack>` will be parsed and passed to `<Sandpack>/Sandpack>` as file props. 
-
-That means you can define [file property](https://sandpack.codesandbox.io/docs/getting-started/custom-content#advanced-usage) in code block meta.
-
-````md
-
-<Sandpack>
-```js src/index.js active readOnly
-console.log('Hello Sandpack')
-```
-
-```js src/hidden.js hidden
-console.log('I'm hidden')
-```
-</Sandpack>
-
-````
-
-Code above will transform into:
-
-```tsx
-<Sandpack
-  files={{
-    "src/index.js": {
-      code: `console.log('Hello Sandpack')`,
-      active: true,
-      readOnly: true,
-    },
-    "src/hidden.js": { 
-      code: `console.log('I'm hidden')`, 
-      hidden: true 
-    },
-  }}
-/>;
-
-```
-
-
-## Compatible  
-
-- ✅ next.js with @next/mdx. 👉🏻[example](examples/next-mdx)
-- ✅ next.js with next-remote-mdx. 👉🏻[example](examples/next-mdx-remote)
-- ✅ gatsby.js . 👉🏻[example](examples/gatsby)
-- ✅ docusaurus.  👉🏻[example](examples/docusaurus)
-- ✅ astro.  👉🏻[example](examples/astro)
-
-❗️for docusaurus, you need upgrade mdx to v2, please checkout [docusaurus-mdx-2](https://github.com/pomber/docusaurus-mdx-2)
-
----
-<br/>
-
-## Advance Useage
-
-### Custom Sandpack component
-
-`remark-sandpack` will parse `<Sandpack></Sandpack>` jsx statements in your MDX files. If your custom sandpack component uses a different name, such as `SandpackEnhanced`. For instance:
+And the module `index.mjs` contains:
 
 ```js
-// in your mdx config
-remarkPlugins: [[remarkSandpack, { componentName: 'SandpackEnhanced' }]],
+import remarkSandpack from '@lekoarts/remark-sandpack'
+import { remark } from 'remark'
+import remarkMdx from 'remark-mdx'
+import { read } from 'to-vfile'
+
+const file = await remark()
+	.use(remarkMdx)
+	.use(remarkSandpack)
+	.process(await read('example.mdx'))
+
+console.log(String(file))
 ```
 
-Additionally, you can pass an array of component names if you want to support multiple components. For instance:
+Then running `index.mjs` yields:
+
+````mdx
+<Sandpack template="react" files={{"App.js":{"code":"import { NAME } from './constants.js'\n\nexport default function App() {\n  return <h1>Hello {NAME}</h1>\n}","active":true},"constants.js":{"code":"export const NAME = 'World'","readOnly":true}}}>
+  ```js name=App.js active
+  import { NAME } from './constants.js'
+
+  export default function App() {
+    return <h1>Hello {NAME}</h1>
+  }
+  ```
+
+  ```js name=constants.js readOnly
+  export const NAME = 'World'
+  ```
+</Sandpack>
+````
+
+The individual code blocks are added to the `files` prop of the `<Sandpack>` component. Any other props will be passed through to the `<Sandpack>` component, e.g. in the example above the `template="react"` is kept in place.
+
+### Code blocks
+
+You are **required** to add a `name` to each code block.
+
+````md
+```js name=filename.js
+console.log('Hello World')
+```
+````
+
+You can also add optional configuration for each code block (Sandpack's [file format](https://sandpack.codesandbox.io/docs/getting-started/usage#file-format)).
+
+- `hidden`
+- `active`
+- `readOnly`
+- `showReadOnly`
+
+Add them after the filename like so:
+
+````md
+```js name=filename.js active
+console.log('Hello World')
+```
+````
+
+## API
+
+This package exports no identifiers.
+The default export is [`remarkSandpack`](#unifieduseremarksandpack-options).
+
+### `unified().use(remarkSandpack[, options])`
+
+Add support for transforming code blocks into `files` prop for `<Sandpack>` components.
+
+#### Parameters
+
+- `options` ([`Options`](#options), optional) — configuration
+
+#### Returns
+
+Nothing (`undefined`).
+
+#### Notes
+
+Doesn't handle adding Sandpack to your app and into your MDX. Follow the Sandpack [install instructions](https://sandpack.codesandbox.io/docs/getting-started) to add Sandpack. You'll need to [pass/import](https://mdxjs.com/docs/using-mdx/#components) that component into your MDX.
+
+### `Options`
+
+Configuration (TypeScript type)
+
+#### Fields
+
+- `componentName` (`Array<string>`, default: `['Sandpack']`) — By default, `@lekoarts/remark-sandpack` looks for `<Sandpack>` occurences in the MDX. If you use a different name, adjust `componentName`. You can also pass in multiple names in case you have different Sandpack components.
+
+## Examples
+
+### Custom `componentName`
+
+This example overrides the default `componentName` in order to use a different name in the MDX.
 
 ```js
-// in your mdx config
-remarkPlugins: [[remarkSandpack, { componentName: ['SandpackEnhanced', 'AnotherSandpackComponent'] }]],
+import remarkSandpack from '@lekoarts/remark-sandpack'
+import { remark } from 'remark'
+import remarkMdx from 'remark-mdx'
+import { read } from 'to-vfile'
+
+const file = await remark()
+	.use(remarkMdx)
+	.use(remarkSandpack, { componentName: ['Playground'] })
+	.process(await read('example.mdx'))
+
+console.log(String(file))
 ```
 
-This configuration allows you to use either `SandpackEnhanced` or `AnotherSandpackComponent` in your MDX files.
+````mdx
+<Playground template="vanilla">
 
-```mdx
-// in your MDX file
-
-import SandpackEnhanced from 'your-component-path'
-import AnotherSandpackComponent from 'another-component-path'
-
-<SandpackEnhanced>
-// code blocks for SandpackEnhanced
-</SandpackEnhanced>
-
-<AnotherSandpackComponent>
-// code blocks for AnotherSandpackComponent
-</AnotherSandpackComponent>
-
+```js name=index.js active
+console.log('Hello World')
 ```
-By passing an array, you can utilize multiple custom sandpack components within your MDX files.
 
-> Make sure your custom sandpack component receive `files` prop.
+</Playground>
+````
+
+### Astro
+
+You can view a full end-to-end example inside [`examples/astro`](./examples/astro/).
