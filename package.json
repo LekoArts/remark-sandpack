@@ -30,9 +30,6 @@
 	"files": [
 		"dist"
 	],
-	"publishConfig": {
-		"access": "public"
-	},
 	"scripts": {
 		"lint": "eslint",
 		"lint:fix": "eslint --fix",
