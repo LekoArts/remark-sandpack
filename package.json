@@ -2,7 +2,7 @@
 	"name": "@lekoarts/remark-sandpack",
 	"type": "module",
 	"version": "1.0.0",
-	"packageManager": "pnpm@10.11.0",
+	"packageManager": "pnpm@10.20.0",
 	"description": "Author Sandpack examples in MDX",
 	"author": "LekoArts",
 	"license": "MIT",
