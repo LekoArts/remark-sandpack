@@ -11,6 +11,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  build:
+    name: Build Packages
+    uses: ./.github/workflows/build.yml
   unit-testing:
     name: Unit Testing
     uses: ./.github/workflows/unit-testing.yml

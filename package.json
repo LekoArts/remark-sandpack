@@ -41,7 +41,8 @@
 		"changeset": "changeset",
 		"version": "changeset version",
 		"version:ci": "changeset version && pnpm install --lockfile-only",
-		"release": "pnpm build && changeset publish"
+		"release": "pnpm build && changeset publish",
+		"check": "publint && attw --pack . --profile esm-only"
 	},
 	"dependencies": {
 		"estree-util-value-to-estree": "^3.5.0",
@@ -49,6 +50,7 @@
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "^6.2.0",
+		"@arethetypeswrong/cli": "^0.18.2",
 		"@changesets/changelog-github": "^0.5.1",
 		"@changesets/cli": "^2.29.7",
 		"@types/mdast": "^4.0.4",
@@ -57,6 +59,7 @@
 		"eslint-plugin-astro": "^1.4.0",
 		"eslint-plugin-format": "^1.0.2",
 		"mdast-util-mdx-jsx": "^3.2.0",
+		"publint": "^0.3.15",
 		"remark": "^15.0.1",
 		"remark-mdx": "^3.1.1",
 		"tsdown": "^0.15.12",
