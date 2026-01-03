@@ -13,10 +13,10 @@
 		"@astrojs/react": "^4.4.2",
 		"@codesandbox/sandpack-react": "^2.20.0",
 		"@lekoarts/remark-sandpack": "*",
-		"@types/react": "^19.2.5",
+		"@types/react": "^19.2.7",
 		"@types/react-dom": "^19.2.3",
 		"astro": "^5.16.6",
-		"react": "^19.2.0",
-		"react-dom": "^19.2.0"
+		"react": "^19.2.3",
+		"react-dom": "^19.2.3"
 	}
 }
