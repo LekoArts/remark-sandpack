@@ -86,7 +86,6 @@ You can also add optional configuration for each code block (Sandpack's [file fo
 - `hidden`
 - `active`
 - `readOnly`
-- `showReadOnly`
 
 Add them after the filename like so:
 
