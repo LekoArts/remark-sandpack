@@ -46,7 +46,7 @@
 	},
 	"dependencies": {
 		"estree-util-value-to-estree": "^3.5.0",
-		"unist-util-visit": "^5.0.0"
+		"unist-util-visit": "^5.1.0"
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "^6.7.3",
@@ -59,11 +59,11 @@
 		"eslint-plugin-astro": "^1.6.0",
 		"eslint-plugin-format": "^1.4.0",
 		"mdast-util-mdx-jsx": "^3.2.0",
-		"publint": "^0.3.16",
+		"publint": "^0.3.17",
 		"remark": "^15.0.1",
 		"remark-mdx": "^3.1.1",
-		"tsdown": "^0.18.4",
+		"tsdown": "^0.20.3",
 		"typescript": "^5.9.3",
-		"vitest": "^4.0.16"
+		"vitest": "^4.0.18"
 	}
 }
