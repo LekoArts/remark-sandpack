@@ -46,24 +46,24 @@
 	},
 	"dependencies": {
 		"estree-util-value-to-estree": "^3.5.0",
-		"unist-util-visit": "^5.0.0"
+		"unist-util-visit": "^5.1.0"
 	},
 	"devDependencies": {
-		"@antfu/eslint-config": "^6.7.3",
+		"@antfu/eslint-config": "^7.6.1",
 		"@arethetypeswrong/cli": "^0.18.2",
-		"@changesets/changelog-github": "^0.5.2",
-		"@changesets/cli": "^2.29.8",
+		"@changesets/changelog-github": "^0.6.0",
+		"@changesets/cli": "^2.30.0",
 		"@types/mdast": "^4.0.4",
 		"@types/node": "^24.11.0",
 		"eslint": "^9.39.3",
 		"eslint-plugin-astro": "^1.6.0",
-		"eslint-plugin-format": "^1.5.0",
+		"eslint-plugin-format": "^2.0.1",
 		"mdast-util-mdx-jsx": "^3.2.0",
-		"publint": "^0.3.16",
+		"publint": "^0.3.18",
 		"remark": "^15.0.1",
 		"remark-mdx": "^3.1.1",
 		"tsdown": "^0.18.4",
 		"typescript": "^5.9.3",
-		"vitest": "^4.0.16"
+		"vitest": "^4.0.18"
 	}
 }
