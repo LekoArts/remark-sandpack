@@ -5,4 +5,5 @@ export default defineConfig({
 	platform: 'neutral',
 	dts: true,
 	clean: true,
+	external: ['@types/mdast', '@types/unist'],
 })
