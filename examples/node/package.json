@@ -2,7 +2,7 @@
 	"name": "example-node",
 	"version": "1.0.0",
 	"private": true,
-	"packageManager": "pnpm@10.30.3",
+	"packageManager": "pnpm@11.5.0",
 	"scripts": {
 		"start": "node index.mjs"
 	},
