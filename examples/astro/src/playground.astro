@@ -1,6 +1,6 @@
 ---
 import type { SandpackPredefinedTemplate, SandpackSetup } from '@codesandbox/sandpack-react'
-import { Sandpack } from '@codesandbox/sandpack-react'
+import { SandpackClient } from './SandpackClient'
 
 interface Props {
   files: Record<string, string>
@@ -12,4 +12,4 @@ interface Props {
 const { files, template, customSetup } = Astro.props
 ---
 
-<Sandpack theme="auto" files={files} template={template} customSetup={customSetup} client:visible />
+<SandpackClient files={files} template={template} customSetup={customSetup} client:visible />
