@@ -5,5 +5,7 @@ export default defineConfig({
 	platform: 'neutral',
 	dts: true,
 	clean: true,
-	inlineOnly: ['@types/mdast', '@types/unist'],
+	deps: {
+		onlyBundle: ['@types/mdast', '@types/unist'],
+	},
 })
