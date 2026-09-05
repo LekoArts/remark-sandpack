@@ -21,8 +21,8 @@ importers:
         specifier: ^2.20.0
         version: 2.20.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@lekoarts/remark-sandpack':
-        specifier: '*'
-        version: 1.0.0
+        specifier: file:../..
+        version: file:../..
       '@types/react':
         specifier: ^19.2.18
         version: 19.2.18
@@ -672,8 +672,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@lekoarts/remark-sandpack@1.0.0':
-    resolution: {integrity: sha512-GIQtJcDt8Jfp0XDvEya96k/Vj68RFx9G9r2MxZzPLLgGRzco9/8eHu8/m8nBSPa9b3BoP/5rajdmhj5ZcqjdeQ==}
+  '@lekoarts/remark-sandpack@file:../..':
+    resolution: {directory: ../.., type: directory}
 
   '@lezer/common@1.5.2':
     resolution: {integrity: sha512-sxQE460fPZyU3sdc8lafxiPwJHBzZRy/udNFynGQky1SePYBdhkBl1kOagA9uT3pxR8K09bOrmTUqA9wb/PjSQ==}
@@ -2807,7 +2807,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@lekoarts/remark-sandpack@1.0.0':
+  '@lekoarts/remark-sandpack@file:../..':
     dependencies:
       estree-util-value-to-estree: 3.5.0
       unist-util-visit: 5.1.0
