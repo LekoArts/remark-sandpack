@@ -1,6 +1,6 @@
-shellEmulator: true
-
+minimumReleaseAgeExcludePrune: true
 trustPolicy: no-downgrade
+shellEmulator: true
 
 overrides:
   '@types/estree': 1.0.9
