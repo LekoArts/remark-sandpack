@@ -10,7 +10,7 @@ export default antfu({
 	typescript: true,
 	astro: true,
 	javascript: true,
-	ignores: ['dist', 'node_modules', 'pnpm-lock.yaml'],
+	ignores: ['dist', 'node_modules', 'pnpm-lock.yaml', '.mastracode'],
 }, {
 	rules: {
 		'ts/no-restricted-types': ['error', {

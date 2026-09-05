@@ -126,6 +126,8 @@ Configuration (TypeScript type)
 
 ## Examples
 
+When running the checked-in examples from a source checkout, run the root `pnpm run build` first so their local `file:../..` dependencies can resolve the package exports from `dist`.
+
 ### Custom `componentName`
 
 This example overrides the default `componentName` in order to use a different name in the MDX.
