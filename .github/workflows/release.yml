@@ -26,9 +26,9 @@ jobs:
         id: changesets
         uses: changesets/action@v2.1.1
         with:
-          commit: 'chore(release): Publish'
-          title: 'Changesets: Version Packages'
-          publish: pnpm release
-          version: pnpm version:ci
+          commit-message: 'chore(release): Publish'
+          pr-title: 'Changesets: Version Packages'
+          publish-script: pnpm release
+          version-script: pnpm version:ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
