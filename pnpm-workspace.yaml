@@ -3,7 +3,7 @@ trustPolicy: no-downgrade
 shellEmulator: true
 
 overrides:
-  '@types/estree': 1.0.9
+  '@types/estree': 1.0.10
 
 allowBuilds:
   esbuild: true
